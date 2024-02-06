@@ -1,0 +1,10 @@
+*Mlops-platzi/
+base requirements.txt
+ent*/
+mlruns/
+.vscode/
+
+data/
+notebooks/
+Practica_tracking/
+utils/
