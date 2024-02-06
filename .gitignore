@@ -4,6 +4,5 @@ ent*/
 mlruns/
 .vscode/
 
-data/
-notebooks/
-utils/
+data/data_sin_procesar/tickets_classification_eng.json
+
