@@ -15,23 +15,25 @@ import datetime
 
 warnings.filterwarnings("ignore")
 
+PATH_DATA_RAW = "data/data_sin_procesar"
+PATH_DATA_PROCESSED = "data/data_procesada"
 
 class TextProcessing:
-    """This class is used to process the text,
-    contains methods to tokenize, remove stopwords, lemmatize and pos_tagging the text
-    then, this data transformed to a dataframe and saved to a CSV file
-    The idea is to use this class in the pipeline to feature extration process"""
+    # Esta Clase es usada procesara el texto, realizando Tokenización, Eliminación de stopwords, 
+    # Lematización y Etiquetado POS. También transformará la data en un dataframe y la guardara en un archivo CSV 
+    
+    # La idea es utilizar esta clase en el proceso de extracción de características.
 
     def __init__(self, language: str):
         """This class is used to process the text
         Class parameters:
-            lenguage (str): Language of the text to process
+            language (str): Language of the text to process
         """
         logging.basicConfig(level=logging.INFO)
         self.logger = logging.getLogger(__name__)
 
         nltk.download("averaged_perceptron_tagger")
-        self.lenguage = language
+        self.language = language
         self.stop_words = set(stopwords.words(self.language))
         self.stemmer = SnowballStemmer(self.language)
 
@@ -79,7 +81,7 @@ class TextProcessing:
     def read_json(self, path: str, file_name: str):
         """This method is used to read the json file"""
         file_path = os.path.join(path, file_name)
-        with open(file_path, "r") as file:
+        with open(file_path, encoding="utf8") as file:
             datos = json.load(file)
         df_tickets = pd.json_normalize(datos)
         return df_tickets
@@ -122,8 +124,7 @@ class TextProcessing:
     def run(self, file_name: str, version: int):
         """Runs the entire text processing pipeline."""
         name_data_input = f"{file_name}"
-        PATH_DATA_RAW = "tracking/data/data_raw"
-        PATH_DATA_PROCESSED = "tracking/data/data_processed"
+        
         # reading JSON data
         data_tickets = self.read_json(
             path=PATH_DATA_RAW, file_name=f"{name_data_input}.json"
@@ -151,8 +152,7 @@ class TextProcessing:
         )
         self.logger.info(f"Data successfully saved to {PATH_DATA_PROCESSED}")
 
-
-# TODO: ejecutar método run en clase de orchestrator
+#TODO: ejecutar método run en clase de orchestrator
 if __name__ == "__main__":
     text_processing = TextProcessing(language="english")
     text_processing.run(file_name="tickets_classification_eng", version="1")
