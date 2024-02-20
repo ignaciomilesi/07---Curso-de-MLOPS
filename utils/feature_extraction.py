@@ -62,7 +62,7 @@ class FeatureExtraction:
         df_doc_topics = pd.DataFrame(
             np.round(self.W, 2), columns=col_names, index=tickets_names
         )
-        top_topics = np.argmax(self.df.values, axis=1)
+        top_topics = np.argmax(self.W, axis=1)
         df_doc_topics["relevant_topics"] = top_topics
         print(df_doc_topics.head())
         self.df["relevant_topics"] = top_topics
@@ -97,11 +97,13 @@ class FeatureExtraction:
             file_name=f"tickets_classification_eng_{data_version}.csv",
         )
         self.fit(df_tickets)
-        extracted_topics = self.topic_modeling_nmf(n_components=4)
+        extracted_topics = self.topic_modeling_nmf(n_components=3)
         for idx, topic in enumerate(extracted_topics):
             print(f"Topic {idx}: {topic}")
+        
         df_tickets = self.create_topics()
         topic_mapping = self.topic_mapping(df_tickets)
+        
         self.save_topic_mapping_to_json(
             dictionary=topic_mapping,
             path=data_path_processed,
@@ -110,7 +112,6 @@ class FeatureExtraction:
         self.save_df_to_csv(
             df_tickets, data_path_processed, f"tickets_inputs_eng_{data_version}.csv"
         )
-
 
 # TODO: ejecutar run en clase de orquestación
 if __name__ == "__main__":

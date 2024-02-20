@@ -85,11 +85,20 @@ Miremos el caso de `morning`, que se queda solo con la raíz `morn`; o el caso d
 A diferencia de lo explicado anteriormente, aca se utiliza el etiquetado POS para filtrar y quedarse solo con los sustantivos, ademas de que transforma el array en un string. El archivo de salida sera `data/data_procesada/tickets_classification_eng_1.csv`
 
 
-El segundo archivo a archivo a ejecutar es el `feature_extraction.py` el cual tomara el texto procesado y lo clasificara en temas:
+El segundo archivo a ejecutar es el `feature_extraction.py` el cual tomara el texto procesado y lo clasificara en temas, para ello utiliza dos herramientas de scikit-learn:
+
+**- TfidfVectorizer:** es una medida que expresa lo relevante que es una palabra en un documento, teniendo en cuenta el número de veces que aparece esa palabra (o token) en dicho documento y  su presencia en el corpus, para este caso los documentos serian los tickets mientras que el corpus es la totalidad de estos. De forma muy general, un término que aparece con frecuencia en un documento en particular, y rara vez en todo el corpus, tendrá una puntuación IDF más alta, ya que se considerara que esa palabra importante y representativa de ese documento.
+
+**- NMF (Factorización de matrices no negativas):** 
 
 
+La Factorización de Matriz no negativa actúa sobre la Matriz de Término-Documento y produce lo siguiente:
 
-TfidfVectorizer y NMF de scikit_learn
+La matriz W , que se denomina matriz documento-tema . Esta matriz muestra la distribución de los temas en los documentos del corpus.
+La matriz H , que también se denomina matriz término-tópico . Esta matriz captura la importancia de los términos en los temas.
+NMF es más fácil de interpretar ya que todos los elementos de las matrices W y H ahora son no negativos. Por lo que una mayor puntuación corresponde a una mayor relevancia.
+
+
 
 
 
