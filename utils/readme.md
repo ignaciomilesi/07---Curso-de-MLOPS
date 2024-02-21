@@ -91,37 +91,63 @@ El segundo archivo a ejecutar es el `feature_extraction.py` el cual tomara el te
 
 **- NMF (Factorización de matrices no negativas):** 
 
+El TfidfVectorizer generara la Matriz Término-Documento como la siguiente:
 
-La Factorización de Matriz no negativa actúa sobre la Matriz de Término-Documento y produce lo siguiente:
+| #       | bank   |credit |loan  |money |
+| ---     | ---    |---    |---   |----- |
+|ticket_0 | 0.162  |0  	   |0  	  |0     |
+|ticket_2 | 0  	   |0.133  |0  	  |0     |
+|ticket_3 | 0.101  |0.208  |0  	  |0     |
+|ticket_4 | 0.148  |0  	   |0  	  |0.307 |
+|ticket_6 | 0.125  |0  	   |0  	  |0     |
+|ticket_7 | 0  	   |0  	   |0.132 |0     |
+|ticket_8 | 0.148  |0  	   |0  	  |0.034 |
+|ticket_9 | 0      |0.465  |0	  |0     |
 
-La matriz W , que se denomina matriz documento-tema . Esta matriz muestra la distribución de los temas en los documentos del corpus.
-La matriz H , que también se denomina matriz término-tópico . Esta matriz captura la importancia de los términos en los temas.
-NMF es más fácil de interpretar ya que todos los elementos de las matrices W y H ahora son no negativos. Por lo que una mayor puntuación corresponde a una mayor relevancia.
+En este caso se muestra para los primeros 8 ticket, que tan relevante son los términos bank, credit, loan y money, a mayor valor, mayor sera la relevancia de ese termino en ese ticket.
 
+La Factorización de Matriz no negativa actúa sobre esta matriz, descomponiendola de la siguiente manera:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-.
-.
-.
-.
-.
-.
+![descomposición](imagenes/matriz-doc-term.png)
 
 
+La matriz W , que se denomina matriz documento-tema. Esta matriz muestra la distribución de los temas en los documentos del corpus.
 
-Nota:
+La matriz H , que también se denomina matriz término-tema. Esta matriz captura la importancia de los términos en los temas.
+
+NMF inicializara dos matrices W y H aleatorias, con la cantidad de temas que le indiquemos, y el algoritmo se ejecutara iterativamente hasta que encuentre W y H que minimizan la función de costo.
+
+La matriz que nos interesa, en este ejemplo, es la matriz documento-tema, la cual usaremos para definir a que tema pertenece cada ticket. 
+
+| #       |topic0  |topic1  |topic2  |relevant_topics|
+| ---     | ---    |---     |---     |-----          |
+|ticket_0 |   0.03 |   0.01 |   0.02 |            0  |
+|ticket_1 |   0.01 |   0.02 |   0.00 |            1  |
+|ticket_2 |   0.00 |   0.06 |   0.00 |            1  |
+|ticket_3 |   0.02 |   0.07 |   0.01 |            1  |
+
+La matriz documento-tema es la que se muestra arriba (con el agregado de la columna final), a mayor valor mayor sera la posibilidad de que el ticket pertenezca al tema, con esto, se definió la pertenencia del ticket y se agrego la ultima columna indicando a que tema  pertenecen.
+
+Para que no sea tan abstracto se indico un nombre a cada tema (Topic), en función a los términos que engloba:
+
+**- Topic 0 "Bank Account Services":** account, bank, check, money, chase, deposit, fund, day, claim, fee, branch, call, transact, number, charg
+
+**- Topic 1 "Credit Report or Prepaid Card":** credit, card, report, chase, inquiri, charg, account, disput, compani, score, letter, author, fraud, inform, us
+
+**- Topic 2 "Mortgage/Loan":** payment, loan, chase, mortgag, month, home, interest, time, pay, year, modif, rate, amount, fee, letter
+
+Por ultimo, luego de ejecutar ambos archivos, tendremos en la carpeta de data procesada 3 archivos:
+
+**- tickets_classification_eng_1.csv:** Es el generado por el textprocessing.py y que contiene el contenido del ticket, la clasificación del ticket y el texto procesado (tokens) 
+
+**- tickets_inputs_eng_1.csv":** Es el generado por el feature_extraction.py, idéntico al anterior pero con el agregado de la ultima columna indicando el tema relevante (como un int)
+
+**- topic_mapping_1.json":** También fue generado por el feature_extraction.py e indica el mapeo de los temas (indica el titulo del tema según su numero)
+
+---
+
+<sub>
+Nota extra:
 Otros métodos que se pueden aplicar para el procesamiento del texto son:
 
 Stemming: relaciona los afijos de las palabras para obtener la raíz de la palabra, por ejemplo, going se convierte en go.
@@ -133,3 +159,4 @@ N-gramas: son una secuencia continua de palabras adyacentes en una oración, nec
 TF (frecuencia del término): es el número de veces que aparece una palabra en un mensaje o una oración; indica la importancia de esa palabra.
 
 Reconocimiento de entidades nombradas: identifica y etiqueta palabras que representan entidades de palabras reales, como personas, organizaciones, lugares, fechas, etc.
+</sub>
