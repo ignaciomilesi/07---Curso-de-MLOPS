@@ -145,7 +145,6 @@ Por ultimo, luego de ejecutar ambos archivos, tendremos en la carpeta de data pr
 
 ---
 
-<sub>
 Nota extra:
 Otros métodos que se pueden aplicar para el procesamiento del texto son:
 
@@ -158,4 +157,3 @@ N-gramas: son una secuencia continua de palabras adyacentes en una oración, nec
 TF (frecuencia del término): es el número de veces que aparece una palabra en un mensaje o una oración; indica la importancia de esa palabra.
 
 Reconocimiento de entidades nombradas: identifica y etiqueta palabras que representan entidades de palabras reales, como personas, organizaciones, lugares, fechas, etc.
-</sub>
