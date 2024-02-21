@@ -53,11 +53,10 @@ El primer archivo a ejecutar es el `textprocessing.py` el cual procesara el text
 
 Este archivo utiliza la librería nltk, que posee todas la herramientas antes descritas, para el procesamiento de texto
 
-<sub>
 
 **NOTA:** Es necesario realizar `python -m nltk.downloader stopwords` y `python -m nltk.downloader punkt` luego de la instalación del paquete nltk mediante pip, para la descarga de los paquetes complementarios
 
-</sub>
+
 
 Si analizamos paso a paso el procesamiento del texto de ejemplo veremos
 
