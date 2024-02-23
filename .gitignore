@@ -3,7 +3,7 @@ base requirements.txt
 ent*/
 mlruns/
 .vscode/
-
+*.db
 data/
 
 
