@@ -6,5 +6,6 @@ El dataset se obtuvo de: https://www.kaggle.com/datasets/abhishek14398/automatic
 
 
 Que se realizo. Ruta:
-1. practica de tracking: las 3 formas de trackear con MLflow
-2. utils: funciones para el procesamiento del texto
+1. Introducción al tracking: las 3 formas de trackear con MLflow
+2. Utils: funciones para el procesamiento del texto
+3. Tracking: ejemplo de trackeo usando MLflow
