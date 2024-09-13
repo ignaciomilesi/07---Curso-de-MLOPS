@@ -15,9 +15,6 @@ import datetime
 
 warnings.filterwarnings("ignore")
 
-PATH_DATA_RAW = "data/data_sin_procesar"
-PATH_DATA_PROCESSED = "data/data_procesada"
-
 class TextProcessing:
     # Esta Clase es usada procesara el texto, realizando Tokenización, Eliminación de stopwords, 
     # Lematización y Etiquetado POS. También transformará la data en un dataframe y la guardara en un archivo CSV 
@@ -121,13 +118,13 @@ class TextProcessing:
         return df
 
 
-    def run(self, file_name: str, version: int):
+    def run(self, path_data_raw:str, path_data_processed:str, file_name: str, version: int):
         """Runs the entire text processing pipeline."""
         name_data_input = f"{file_name}"
         
         # reading JSON data
         data_tickets = self.read_json(
-            path=PATH_DATA_RAW, file_name=f"{name_data_input}.json"
+            path = path_data_raw, file_name=f"{name_data_input}.json"
         )
         # data transformation
         data_tickets = self.data_transform(df=data_tickets)
@@ -147,12 +144,17 @@ class TextProcessing:
         # Saving processed data
         self.save_processed_data(
             df=data_tickets,
-            path=PATH_DATA_PROCESSED,
+            path=path_data_processed,
             file_name=f"{file_name}_{version}.csv",
         )
-        self.logger.info(f"Data successfully saved to {PATH_DATA_PROCESSED}")
+        self.logger.info(f"Data successfully saved to {path_data_processed}")
 
 #TODO: ejecutar método run en clase de orchestrator
 if __name__ == "__main__":
     text_processing = TextProcessing(language="english")
-    text_processing.run(file_name="tickets_classification_eng", version="1")
+
+    text_processing.run(
+        path_data_raw = "data/data_sin_procesar",
+        path_data_processed = "data/data_procesada", 
+        file_name="tickets_classification_eng", 
+        version="11")

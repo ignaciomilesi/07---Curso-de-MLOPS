@@ -5,5 +5,5 @@ mlruns/
 .vscode/
 *.db
 data/
-
+orquestacion/utils
 
