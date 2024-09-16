@@ -3,8 +3,7 @@ base requirements.txt
 ent*/
 mlruns/
 .vscode/
-
+*.db
 data/
-notebooks/
-Practica_tracking/
-utils/
+orquestacion/utils
+
