@@ -9,16 +9,16 @@ Que se realizo:
 
 En la rama main -> teoría y practica:
 
-1. Introducción al tracking: las 3 formas de trackear con MLflow → [Notebook](Introduccion_tracking\introduccion_al_tracking.ipynb)
+1. Introducción al tracking: las 3 formas de trackear con MLflow → [Notebook](Introduccion_tracking/introduccion_al_tracking.ipynb)
 
-2. Utils: funciones para el procesamiento del texto → [Descripción](utils\readme.md)
+2. Utils: funciones para el procesamiento del texto → [Descripción](utils/readme.md)
 
 3. Tracking: ejemplo de trackeo usando MLflow →
-[Notebook](tracking\tracking_data_tickets_baseline.ipynb)
+[Notebook](tracking/tracking_data_tickets_baseline.ipynb)
 
-4. Orquestación / Introducción: Introducción a los flow, task y uso de prefect → [Descripción](orquestacion\introduction\readme.md)
+4. Orquestación / Introducción: Introducción a los flow, task y uso de prefect → [Descripción](orquestacion/introduction/readme.md)
 
-5. Orquestación : Ejemplo de generación y aplicación de un flow con prefect → [Descripción](orquestacion\readme.md)
+5. Orquestación : Ejemplo de generación y aplicación de un flow con prefect → [Descripción](orquestacion/readme.md)
 
 En la rama deploy-serving:
 
