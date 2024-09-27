@@ -39,5 +39,18 @@ async def read_root(data: ProcessTextRequestModel):
 
 Esta app, no solo devolverá la predicción de la Clasificacion del texto pasado, sino que también lo guardara para mejorar el modelo. Dentro del archivo se comenta el paso a paso del funcionamiento
 
+### Archivo `db.py`
 
+El archivo `db.py` se encarga de manejar la base de datos. Se crea la clases para ingresar los datos a la base
 
+```python
+class PredictionsTickets(SQLModel, table=True):
+    id: int | None = Field(default=None, primary_key=True)
+    client_name: str 
+    prediction: str
+```
+y la función para crear la tabla
+
+### Archivo `util.py`
+
+El archivo `util.py` se encarga del procesamiento del texto: Tokenización, Lematización, etc

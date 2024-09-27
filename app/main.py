@@ -30,7 +30,7 @@ app = FastAPI(title="FastAPI, Docker, and Traefik")
 @app.post("/predict")
 async def read_root(data: ProcessTextRequestModel):
 
-    # Inicial seccion en la base de datos
+    # Inicial sesión en la base de datos
     session = Session(engine)
     
     # Carga el modelo
