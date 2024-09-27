@@ -6,4 +6,6 @@ mlruns/
 *.db
 data/
 orquestacion/utils
-
+deploy_serving
+orquestacion/
+tracking/
