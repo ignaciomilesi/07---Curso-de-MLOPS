@@ -54,3 +54,16 @@ y la función para crear la tabla
 ### Archivo `util.py`
 
 El archivo `util.py` se encarga del procesamiento del texto: Tokenización, Lematización, etc
+
+### Archivo `config.py`
+
+El archivo `config.py` va a guarda la dirección de la base de datos. Lo va a tomar del contenedor, definido en el docker-compose:
+
+```yaml
+environment:
+      - DATABASE_URL=postgresql://fastapi_traefik:fastapi_traefik@db:5432/fastapi_traefik
+```
+
+### Archivo `prestart.sh`
+
+El archivo `prestart.sh` se encarga de inicializar la base de datos
