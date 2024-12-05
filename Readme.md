@@ -20,5 +20,7 @@ En la rama main -> teoría y practica:
 
 5. Orquestación : Ejemplo de generación y aplicación de un flow con prefect → [Descripción](orquestacion/readme.md)
 
-En la rama deploy-serving:
+En la rama deploy-serving: se desarrolla la lógica para desplegar la aplicación que utilizara el modelo utilizando Docker y FastAPI.
+
+No se desarrolla la implementacion en AWS debido a que hubo inconvenientes con la cuenta y que el curso hace una explicacion muy vaga de la misma 
 
